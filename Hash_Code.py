@@ -9,43 +9,54 @@ for i in f:
 n = l[0]
 n = n[0]
 length  = int(n)
-print (length)
+#print (length)
 l.pop(0)
-print (l)
+#print (l)
 
 def cal_pic(l, length):
 	# for i in l:
 	# 	dp[i] = 0
+	final_list = []
 	s = []
 	final_set = []
-	H_V = 'I'
-	lenq = 0
+	H_V = []
+	len1 = []
 #	temp_set = set()
 	for i in range(0,length):
 		n= l[i]
-		H_V = n[0]
-		len1 = n[3]
+		H_V.append( n[0])
+		len1.append( n[2])
 		n = n[4:-1]
 		s.append(n) 
-	print (s)
+	print (s[0])
 	string = ''	
 	for i in range (0, length):
 		Stri = "hi"
 		temp_set = {Stri}
-		lis = [temp_set]
+#		lis = [temp_set]
 #		print(lis)
-		Stri 
-		for j in s[0]:
-			print (j)
-# 			if j==' ':
+#		print (s[1])
+		for j in s[i]:
+#			print (j)
+			if j==' ':
 				
-# 					temp_set.add(string)
-# 					string = ''
-# 					print (temp_set)
-# 			else:
-# 				string = string+j
-# #				print (string)
-# 		final_set.append(temp_set)
-# 		temp_set.clear()
-# #	print (final_set)
-# cal_pic(l, length)
+					temp_set.add(string)
+					string = ''
+#					temp_set.discard('hi')
+					
+
+			else:
+				string = string+j
+
+#				print (string)
+		temp_set.add(string)
+		string = ''
+		temp_set.discard('hi')
+#		print (temp_set)
+		
+		final_set.append(temp_set)
+	print (final_set)
+	for i in range (0, length):
+		final_list.append([H_V[i], len1[i], final_set[i]])
+	print (final_list)
+cal_pic(l, length)
