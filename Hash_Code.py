@@ -1,18 +1,4 @@
-from collections import Counter
-l = []
-#print (l)
-f = open("a_example.txt", "r")
-for i in f:
-	l.append(i)
-
-#print (l)
-n = l[0]
-n = n[0]
-length  = int(n)
-#print (length)
-l.pop(0)
-#print (l)
-
+#from collections import Counter
 def cal_pic(l, length):
 	# for i in l:
 	# 	dp[i] = 0
@@ -58,5 +44,48 @@ def cal_pic(l, length):
 	print (final_set)
 	for i in range (0, length):
 		final_list.append([H_V[i], len1[i], final_set[i]])
-	print (final_list)
-cal_pic(l, length)
+	return final_list
+
+if __name__ == "__main__":
+	l = []
+	#print (l)
+	f = open("a_example.txt", "r")
+	for i in f:
+		l.append(i)
+
+	#print (l)
+	n = l[0]
+	n = n[0]
+	length  = int(n)
+	#print (length)
+	l.pop(0)
+	#print (l)
+	final_list = cal_pic(l, length)
+	dp = []
+	for i in range (0, len(final_list)):
+		dp.append(0)
+	g=[]
+	v=[]
+	for u in final_list:
+	    for h in u:
+	        if(h[0]=='H'):
+	            g.append(u)
+	            break
+	        else:
+	            v.append(u)
+	            break
+	print (g, v)
+	ret_min(g, v)
+
+def ret_min(g, v):	
+	done = []
+	for i in range (0, len(final_list)):
+		for j in range (0, len(final_list)):
+			if (i==j):
+				break
+			elif (j is in done): 
+				break
+			g1 = g[i]
+			g2 = g[j]
+			if (set(g1[3]).intersection(set(g2[3])) is not set()):
+				if 
